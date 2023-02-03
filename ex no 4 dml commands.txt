@@ -1,0 +1,97 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int(6)      | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| mobileno | int(15)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into student value('512437','santosh','m','192110275');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student value('512438','chandna','f','192110276');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * from student;
++--------+----------+--------+-----------+
+| regno  | name     | gender | mobileno  |
++--------+----------+--------+-----------+
+| 512432 | satish   | m      | 192110271 |
+| 512433 | ganesh   | m      | 192011446 |
+| 512434 | harish   | m      | 192110272 |
+| 512435 | vamsi    | m      | 192011447 |
+| 512436 | amulya   | f      | 192110273 |
+| 512437 | santosh  | m      | 192110275 |
+| 512438 | chandana | f      | 192110276 |
++--------+----------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> update student set regno='512437' where name='mani';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from student;
++-------+-----------+--------+-----------+
+| regno | name      | gender | mobileno  |
++-------+-----------+--------+-----------+
+| 512432 | satish   | m      | 192110271 |
+| 512433 | ganesh   | m      | 192011446 |
+| 512434 | harish   | m      | 192110272 |
+| 512435 | vamsi    | m      | 192011447 |
+| 512436 | amulya   | f      | 192110273 |
+| 512437 | santosh  | m      | 192110275 |
+| 512438 | chandana | f      | 192110276 |
++--------+----------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> update student set name='mani' where regno='512437';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++-------+-----------+--------+-----------+
+| regno | name      | gender | mobileno  |
++-------+-----------+--------+-----------+
+| 512432 | satish   | m      | 192110271 |
+| 512433 | ganesh   | m      | 192011446 |
+| 512434 | harish   | m      | 192110272 |
+| 512435 | vamsi    | m      | 192011447 |
+| 512436 | amulya   | f      | 192110273 |
+| 512437 | mani     | m      | 192110275 |
+| 512438 | chandana | f      | 192110276 |
++--------+----------+--------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> delete from student where name='mani';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from student;
++--------+----------+--------+-----------+
+| regno  | name     | gender | mobileno  |
++--------+----------+--------+-----------+
+| 512432 | satish   | m      | 192110271 |
+| 512433 | ganesh   | m      | 192011446 |
+| 512434 | harish   | m      | 192110272 |
+| 512435 | vamsi    | m      | 192011447 |
+| 512436 | amulya   | f      | 192110273 |
+| 512438 | chandana | f      | 192110276 |
++--------+----------+--------+-----------+
+6 rows in set (0.00 sec)

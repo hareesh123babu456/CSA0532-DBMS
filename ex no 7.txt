@@ -1,0 +1,95 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 5.5.62 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| regno    | int(6)      | YES  |     | NULL    |       |
+| name     | varchar(15) | YES  |     | NULL    |       |
+| gender   | varchar(1)  | YES  |     | NULL    |       |
+| mobileno | int(15)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select * from student;
++--------+----------+--------+-----------+
+| regno  | name     | gender | mobileno  |
++--------+----------+--------+-----------+
+| 512432 | satish   | m      | 192110271 |
+| 512433 | ganesh   | m      | 192011446 |
+| 512434 | harish   | m      | 192110272 |
+| 512435 | vamsi    | m      | 192011447 |
+| 512436 | amulya   | f      | 192110273 |
+| 512438 | chandana | f      | 192110276 |
++--------+----------+--------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select regno,name,mobileno from student order by gender;
++-------+----------+-----------+
+| regno | name     | mobileno  |
++-------+----------+-----------+
+| 512432 | satish  | 192110271 |
+| 512433 | ganesh  | 192011446 |
+| 512434 | harish  | 192110272 |
+| 512435 | vamsi   | 192011447 |
+| 512436 | amulya  | 192110273 |
+| 512438 | chandana| 192110276 |
++-------+---------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> use stmarks;
+Database changed
+mysql> select * from stmarks;
++--------+----------+-------+
+| regno  | name     | marks |
++--------+----------+-------+
+| 512432 | satish   |    92 |
+| 512433 | ganesh   |    95 |
+| 512434 | harish   |    94 |
+| 512435 | vamsi    |    90 |
+| 512436 | amulya   |    89 |
+| 512438 | chandana |    82 |
++--------+----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select regno,name from stmarks order by marks;
++-------+----------+
+| regno | name     |
++-------+----------+
+|   127 | chandana |
+|   125 | amulya   |
+|   124 | vamsi    |
+|   121 | satish   |
+|   123 | harish   |
+|   122 | ganesh   |
++-------+----------+
+6 rows in set (0.00 sec)
+
+mysql> use student;
+Database changed
+mysql> select count(name),regno from student
+    -> group by regno having count(name)>0;
++-------------+-------+
+| count(name) | regno |
++-------------+-------+
+|           1 |   121 |
+|           1 |   122 |
+|           1 |   123 |
+|           1 |   124 |
+|           1 |   125 |
+|           1 |   127 |
++-------------+-------+
+6 rows in set (0.00 sec)
